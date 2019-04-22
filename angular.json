@@ -133,6 +133,41 @@
           }
         }
       }
+    },
+    "ff-resize-sensor": {
+      "root": "projects/ff-resize-sensor",
+      "sourceRoot": "projects/ff-resize-sensor/src",
+      "projectType": "library",
+      "prefix": "ff",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ff-resize-sensor/tsconfig.lib.json",
+            "project": "projects/ff-resize-sensor/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ff-resize-sensor/src/test.ts",
+            "tsConfig": "projects/ff-resize-sensor/tsconfig.spec.json",
+            "karmaConfig": "projects/ff-resize-sensor/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ff-resize-sensor/tsconfig.lib.json",
+              "projects/ff-resize-sensor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ff-resize-sensor-app"

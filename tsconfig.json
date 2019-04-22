@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ff-resize-sensor": [
+        "dist/ff-resize-sensor"
+      ],
+      "ff-resize-sensor/*": [
+        "dist/ff-resize-sensor/*"
+      ]
+    }
   }
 }

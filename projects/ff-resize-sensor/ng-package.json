@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ff-resize-sensor",
+  "lib": {
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "css-element-queries": "css-element-queries"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "css-element-queries"
+  ]
+}

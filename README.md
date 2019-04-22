@@ -1,27 +1,95 @@
-# FfResizeSensorApp
+[![Build Status](https://travis-ci.org/frontendfreelancerdk/ff-resize-sensor.svg?branch=master)](https://travis-ci.org/frontendfreelancerdk/ff-resize-sensor)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
+# FFResizeSensor
 
-## Development server
+FFResizeSensor is based on `ResizeSensor` from [CSS Element Queries](https://www.npmjs.com/package/css-element-queries) and just adjusts it for an angular project.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installing
 
-## Code scaffolding
+### Npm
+```
+npm install ff-resize-sensor --save
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Include FFResizeSensorModule in AppModule imports.
+`app.module.ts`
+```typescript
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-## Build
+import {AppComponent} from './app.component';
+import {FFResizeSensorModule} from 'ff-resize-sensor';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FFResizeSensorModule
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
 
-## Running unit tests
+## Usage
+From view template as `(resize)` output
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`app.component.ts`
+```typescript
+import {Component} from '@angular/core';
 
-## Running end-to-end tests
+@Component({
+  selector: 'ff-root',
+  template: `<div class="myCss" ffResizeSensor (resize)="onResize($event)"></div>`
+})
+export class AppComponent {
+  onResize(e) {
+    console.log('Event from view template', e);
+  }
+}
+```
+From service with `subscribe` method
+ 
+ `app.component.ts`
+```typescript
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {FFResizeSensorService} from 'ff-resize-sensor';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+@Component({
+  selector: 'ff-root',
+  template: `<div class="myCss" #domElem></div>`
+})
+export class AppComponent implements AfterViewInit {
+  @ViewChild('domElem') domElem: ElementRef;
 
-## Further help
+  constructor(private service: FFResizeSensorService) {}
+  ngAfterViewInit(): void {
+    // Method gets some HTMLElemnt and callback
+    // Callback will be called after HTMLElement resized
+    this.service.subscribe(this.domElem.nativeElement, (event) => {
+      console.log('Event from service', event);
+    });
+  }
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Api
+`FFResizeSensorService`
+```typescript
+subscribe(HTMLElement, (FFResizeSensorEvent)=>void): void
+```
+`FFResizeSensorDirective`
+```typescript
+  public width: number;
+  public height: number;
+  public oldWidth: number;
+  public oldHeight: number;
+  @Output() readonly resize:EventEmitter<FFResizeSensorEvent>
+```
+
+## License
+
+MIT [Frontend Freelancer](mailto:developer@frontend-freelancer.com)
