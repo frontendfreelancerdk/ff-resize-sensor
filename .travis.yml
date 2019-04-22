@@ -3,12 +3,12 @@ addons:
   chrome: stable
 language: node_js
 node_js:
-  - node
+- node
 script:
-  - npm run test_lib
-  - npm run build_lib
+- npm run test_lib
+- npm run build_lib
 before_deploy:
-  - cd dist/ff-resize-sensor
+- cd dist/ff-resize-sensor
 deploy:
   provider: npm
   skip_cleanup: true
@@ -16,3 +16,5 @@ deploy:
   on:
     tags: true
     branch: master
+  api_key:
+    secure: DS6pNyoOHUf10x1rsZEEpKfZ/BLOHwt1Ekl7P0BOGObPNqwykTWUjtXT8oGopVGtkTJPxtNjbEM5rsy0rymaiYFSpKWRcHmpQezMd2YVf9Ci61qr3htb6USjWRjbAyPJTI5lI/U+sWFBbwmxf75JbOL4w99DUFqeZeVYYGMDBEZ5zRTxEa5Ngbq8FtkyxKRosX0sxxucSMOQSK8/b0f6r3E4C/1tdILUvowAIij/jOmwsDlElWzbfRyzxjqO09R03KJ9HRdZpcoENl0n7uhC4x3ypR+yzDKCt9y1f+wxNKhyJKDgVYkGPGyGYEiHZyvhiKTJ4kkqkwN5UAMiZOF2i0OvLofUJRkkDYyyCRyM+M/chqCaJuVelXBivgBNFTwu423pqGJ3dn4lA9Dq2gbHPAB27nhpstnZ3xLgc7Zan8A4z44HMRWUoRE5oN/iMkN5JevmJhtLFVazeBlkShheMfjIiaJhz/K2zJVGzAGEhU2zqyb8ZbV904xh3D5TFMdJY+RkgP8SdxzOw5joE95CyBCEu3NQQlIiPI0D2Eq0223H8m86GfnwDUN2Pm50zXj4bXxuCW2SumE2EfIjnvcOENDvjP7EfZps7GzqM1ASxQN9xKxCeEc3NGNrlLT89Sbjag1aKPqx3wVOVe6EIsp8IYRGHAqyy2gCU745Xav1tWY=
