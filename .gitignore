@@ -38,8 +38,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Coverage
-/projects/ff-resize-sensor/coverage
-
 # Readme
 /projects/ff-resize-sensor/README.md

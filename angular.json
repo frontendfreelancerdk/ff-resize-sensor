@@ -152,7 +152,8 @@
           "options": {
             "main": "projects/ff-resize-sensor/src/test.ts",
             "tsConfig": "projects/ff-resize-sensor/tsconfig.spec.json",
-            "karmaConfig": "projects/ff-resize-sensor/karma.conf.js"
+            "karmaConfig": "projects/ff-resize-sensor/karma.conf.js",
+            "codeCoverage": true
           }
         },
         "lint": {
