@@ -4,17 +4,17 @@ import {FFResizeSensorService} from 'ff-resize-sensor';
 @Component({
   selector: 'ff-root',
   template: `
-    <div class="myCss" ffResizeSensor (resize)="onResize($event)"></div>
-    <div class="myCss" #domElem></div>`,
+      <div class="myCss" ffResizeSensor (resize)="onResize($event)"></div>
+      <div class="myCss" #domElem></div>`,
   styles: [`
-    .myCss {
-      background-color: red;
-      height: 100px;
-    }
+      .myCss {
+          background-color: red;
+          height: 100px;
+      }
   `]
 })
 export class AppComponent implements AfterViewInit {
-  @ViewChild('domElem') domElem: ElementRef;
+  @ViewChild('domElem', {static: true}) domElem: ElementRef;
   title = 'ff-resize-sensor-app';
 
   constructor(private service: FFResizeSensorService) {
